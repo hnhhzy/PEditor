@@ -51,6 +51,22 @@
     "*.{js,jsx,ts,tsx,md,html,css,less,json}": "prettier --write",
     "*.{js,jsx,ts,tsx}": "eslint --fix --quiet"
   },
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@opensumi/antd-theme": "^1.0.3",
+    "@opensumi/ide-core-common": "2.22.5",
+    "@opensumi/ide-core-node": "2.22.5",
+    "@opensumi/ide-debug": "2.22.5",
+    "@opensumi/ide-express-file-server": "2.22.5",
+    "@opensumi/ide-output": "2.22.5",
+    "@opensumi/ide-process": "2.22.5",
+    "@opensumi/ide-scm": "2.22.5",
+    "@opensumi/ide-search": "2.22.5",
+    "@opensumi/ide-static-resource": "2.22.5",
+    "antd": "4",
+    "postcss": "^8.4.21",
+    "request": "^2.88.2"
+  },
   "devDependencies": {
     "@opensumi/ide-addons": "2.22.5",
     "@opensumi/ide-comments": "2.22.5",

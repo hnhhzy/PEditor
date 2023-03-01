@@ -64,6 +64,8 @@ import { customLayoutConfig } from './layout';
 import { MiniDesktopModule } from './module';
 
 import { ExtensionManagerModule } from '../extensionManager/browser';
+import { PEditorContextMenuModule } from 'modules/peditor-context-menu';
+import { FbxConverComponentsModule } from 'modules/conver/fbx';
 
 export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   MainLayoutModule,
@@ -111,6 +113,7 @@ export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
 ];
 
 renderApp({
-  modules: [...CommonBrowserModules, ElectronBasicModule, DemoModule],
+  appName: 'PEditor',
+  modules: [...CommonBrowserModules, ElectronBasicModule, DemoModule,PEditorContextMenuModule,FbxConverComponentsModule],
   layoutConfig: customLayoutConfig,
 });
