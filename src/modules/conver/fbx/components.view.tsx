@@ -7,16 +7,26 @@ import { useInjectable } from '@opensumi/ide-core-browser';
 import { IFileServiceClient } from '@opensumi/ide-file-service';
 import { IResource, ResourceService, WorkbenchEditorService } from '@opensumi/ide-editor';
 
+declare function MainJS(url?: string): void;
+
+
 export const FbxConverComponentsView = () => {
     const test = useInjectable<WorkbenchEditorService>(WorkbenchEditorService);
-    //IFileServiceClient
+    // IFileServiceClient
     const data = test.currentResource?.uri;
-    const handleChange = (value: string) => {
-        console.log(`selected ${value}`);
+    const script = document.createElement('script');
+    script.src = 'plugins\\PEngine.js';
+    script.async = true;
+    document.body.appendChild(script);
+    script.onload = function() {
+        // 脚本文件已经加载完成，可以执行脚本文件中的函数
+        new MainJS(data?.toString());
     };
+
+    // {data?.toString()}
     return (
         <div className={styles.components_wrap}>
-            <button>导入资产  aaa{data?.toString()}bbb</button>
+            <canvas className={styles.canvasImage} id="webgl"></canvas>
         </div>
     );
 };
