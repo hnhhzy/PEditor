@@ -47,6 +47,7 @@ export class FbxConverComponentsContribution implements ClientAppContribution, B
   protected readonly editorService: WorkbenchEditorService;
 
   registerCommands(registry: CommandRegistry) {
+    // 注册打开文件
     registry.registerCommand(COMPONENTS_VIEW_COMMAND, {
       execute: () => {
         this.editorService.open(new URI(`${COMPONENTS_SCHEME_ID}://`), { preview: false });

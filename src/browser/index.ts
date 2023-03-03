@@ -66,6 +66,10 @@ import { MiniDesktopModule } from './module';
 import { ExtensionManagerModule } from '../extensionManager/browser';
 import { PEditorContextMenuModule } from 'modules/peditor-context-menu';
 import { FbxConverComponentsModule } from 'modules/conver/fbx';
+import { TogglePanelSampleModule } from 'modules/toggle-panel';
+import { SlotLocation } from '@opensumi/ide-core-browser';
+import { PEditorRightPannelLayout } from 'modules/peditor-right-pannel/components-layout';
+import { PEditorRightPannelModule } from 'modules/peditor-right-pannel';
 
 export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   MainLayoutModule,
@@ -114,6 +118,19 @@ export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
 
 renderApp({
   appName: 'PEditor',
-  modules: [...CommonBrowserModules, ElectronBasicModule, DemoModule,PEditorContextMenuModule,FbxConverComponentsModule],
+  modules: [...CommonBrowserModules, ElectronBasicModule, DemoModule,
+    PEditorContextMenuModule,FbxConverComponentsModule,TogglePanelSampleModule,
+    PEditorRightPannelModule,
+  ],
   layoutConfig: customLayoutConfig,
+//  layoutConfig: {
+//   ...customLayoutConfig,
+//   ...{[SlotLocation.top]: {
+//     modules: ['@opensumi/ide-menu-bar', 'peditor-right-pannel'],
+//   }},
+//   'rightPannelAction': {
+//     modules: ['peditor-right-pannel'],
+//   },
+// },
+  layoutComponent: PEditorRightPannelLayout,
 });
