@@ -18,9 +18,17 @@ export const FbxConverComponentsView = () => {
     script.src = 'plugins\\PEngine.js';
     script.async = true;
     document.body.appendChild(script);
-    script.onload = function() {
+    script.onload = function () {
         // 脚本文件已经加载完成，可以执行脚本文件中的函数
-        new MainJS(data?.toString());
+        const main = new MainJS(data?.toString());
+        setTimeout(() => {
+            let res = main.getHMDAnimationList();
+            console.log(res);
+            let res2 = main.getHMDModelList();
+            console.log(res2);
+        }, 3000);
+
+
     };
 
     // {data?.toString()}

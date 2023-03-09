@@ -35,9 +35,9 @@ export function PEditorRightPannelLayout() {
           backgroundColor={colors.sideBarBackground}
           slot='right'
           isTabbar={true}
-          defaultSize={layout.right?.currentId ? layout.right?.size || 310 : 0}
+          defaultSize={layout.right?.currentId ? layout.right?.size || 310 : 49}
           minResize={200}
-          minSize={0}
+          minSize={49}
         />
       </SplitPanel>
       <SlotRenderer backgroundColor={colors.statusBarBackground} defaultSize={24} slot='statusBar' />

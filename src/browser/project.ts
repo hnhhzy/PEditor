@@ -99,10 +99,10 @@ export class ProjectSwitcherContribution
 
   onDidRestoreState() {
     if (electronEnv.metadata.launchToOpenFile) {
-      this.editorService.open(URI.file(electronEnv.metadata.launchToOpenFile));
+      this.do("editorService").open(URI.file(electronEnv.metadata.launchToOpenFile));
     }
     electronEnv.ipcRenderer.on('openFile', (event, file) => {
-      this.editorService.open(URI.file(file));
+      this.do("editorService").open(URI.file(file));
     });
   }
 }

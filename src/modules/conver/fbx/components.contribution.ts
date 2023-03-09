@@ -23,6 +23,8 @@ import { IMenuRegistry, MenuContribution, MenuId } from '@opensumi/ide-core-brow
 
 import { FbxConverComponentsView } from './components.view';
 import { IconType } from '@opensumi/ide-theme';
+import { IMainLayoutService } from '@opensumi/ide-main-layout';
+import { TabBarHandler } from '@opensumi/ide-main-layout/lib/browser/tabbar-handler';
 
 const COMPONENTS_VIEW_COMMAND = {
   id: 'peditor-conver-fbx-view',
@@ -42,6 +44,9 @@ export class FbxConverComponentsContribution implements ClientAppContribution, B
   @Autowired(StorageProvider)
   protected readonly getStorage: StorageProvider;
 
+
+  @Autowired(IMainLayoutService)
+  private readonly layoutService: IMainLayoutService;
 
   @Autowired(WorkbenchEditorService)
   protected readonly editorService: WorkbenchEditorService;
@@ -68,7 +73,7 @@ export class FbxConverComponentsContribution implements ClientAppContribution, B
       uid: COMPONENTS_ID,
       scheme: COMPONENTS_SCHEME_ID,
       component: FbxConverComponentsView,
-      //renderMode: EditorComponentRenderMode.ONE_PER_WORKBENCH,
+      // renderMode: EditorComponentRenderMode.ONE_PER_WORKBENCH,
       renderMode: EditorComponentRenderMode.ONE_PER_RESOURCE,
     });
 
@@ -86,6 +91,8 @@ export class FbxConverComponentsContribution implements ClientAppContribution, B
           type: 'component',
           componentId: COMPONENTS_ID,
         });
+        const handler = this.layoutService.getTabbarHandler('peditor-property-manager');
+        handler?.show();
       }
     });
   }
@@ -95,7 +102,7 @@ export class FbxConverComponentsContribution implements ClientAppContribution, B
       scheme: COMPONENTS_SCHEME_ID,
       provideResource: async (uri: URI): Promise<IResource<any>> => {
         const iconClass = this.iconService.fromIcon(
-          '',
+          'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
           'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
           IconType.Background,
         );
@@ -103,12 +110,12 @@ export class FbxConverComponentsContribution implements ClientAppContribution, B
           uri,
           name: localize('sample.antd-components'),
           icon: iconClass!,
-        }
+        };
       },
     });
   }
-
   async onDidStart() {
+
     // this.editorService.open(new URI(`${COMPONENTS_SCHEME_ID}://`), { preview: false });
   }
 }
